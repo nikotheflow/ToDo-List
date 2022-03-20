@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 *,
 *::before,
 *::after {
@@ -30,4 +32,26 @@ html,
 body {
   height: 100%;
   line-height: 1;
+  background-color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+.lists {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+
+  &_list {
+    max-width: 200px;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  &_list-name {
+    margin-bottom: 6px;
+  }
+  &_task-counter {
+  }
 }
