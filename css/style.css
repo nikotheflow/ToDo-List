@@ -43,15 +43,31 @@ body {
 }
 
 .lists_list {
+  position: relative;
   max-width: 200px;
   padding: 15px 30px;
   margin-bottom: 20px;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.lists_list__active {
+  background-color: #ccb6ff;
 }
 
 .lists_list-name {
   margin-bottom: 6px;
+}
+
+.lists_delete-list-btn {
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: #eee;
 }
