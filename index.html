@@ -15,31 +15,77 @@
     <h1>Better ToDo List</h1>
   </header>
 
-  <section class="section-lists">
-    <h2>My lists</h2>
+  <main class="main">
+    <section class="section-lists">
+      <ul class="lists">
+        <li class="lists_list lists_list__active">
+          <h3 class="lists_list-name list-name">Work</h3>
+          <p class="lists_tasks-counter tasks-counter">3 tasks</p>
+          <div class="lists_delete-list-btn"></div>
+        </li>
+        <li class="lists_list">
+          <h3 class="lists_list-name list-name">Breaking</h3>
+          <p class="lists_tasks-counter tasks-counter">5 tasks</p>
+        </li>
+        <li class="lists_list">
+          <h3 class="lists_list-name list-name">Study</h3>
+          <p class="lists_tasks-counter tasks-counter">4 tasks</p>
+        </li>
+      </ul>
 
-    <ul class="lists">
-      <li class="lists_list lists_list__active">
-        <h3 class="lists_list-name">Work</h3>
-        <p class="lists_task-counter">3 tasks</p>
-        <div class="lists_delete-list-btn"></div>
-      </li>
-      <li class="lists_list">
-        <h3 class="lists_list-name">Breaking</h3>
-        <p class="lists_task-counter">5 tasks</p>
-      </li>
-      <li class="lists_list">
-        <h3 class="lists_list-name">Study</h3>
-        <p class="lists_task-counter">4 tasks</p>
-      </li>
-    </ul>
+      <form class="lists_list-creator" action="">
+        <input class="list-creator_list-name" type="text" name="" id="">
+        <button type="list-creator_create-btn">+</button>
+      </form>
+    </section>
 
-    <form class="new-list" action="">
-      <input class="new-list_list-name" type="text" name="" id="">
-      <button type="new-list_create-btn">+</button>
-    </form>
-  </section>
+    <section class="section-tasks">
+      <div class="tasks_header">
+        <h2 class="tasks_list-name list-name">Work</h2>
+        <p class="tasks_tasks-counter tasks-counter">5 task remaining</p>
+      </div>
 
+      <ul class="tasks">
+        <li class="tasks-item task">
+          <input class="task-checkbox" type="checkbox" id="task-1">
+          <label class="task-name" for="task-1">
+            <span class="task-custom-checkbox"></span>
+            first task
+          </label>
+        </li>
+
+        <li class="tasks-item task">
+          <input class="task-checkbox" type="checkbox" id="task-2">
+          <label class="task-name" for="task-2">
+            <span class="task-custom-checkbox"></span>
+            second task
+          </label>
+        </li>
+
+        <li class="tasks-item task">
+          <input class="task-checkbox" type="checkbox" id="task-3">
+          <label class="task-name" for="task-3">
+            <span class="task-custom-checkbox"></span>
+            third task
+          </label>
+        </li>
+      </ul>
+
+      <form class="tasks_task-creator" action="">
+        <input class="task-creator_task-name" type="text" name="" id="">
+        <button type="task-creator_create-btn">+</button>
+      </form>
+    </section>
+  </main>
+
+  <template id="task-template">
+    <li class="tasks-item task">
+      <input class="task-checkbox" type="checkbox">
+      <label class="task-name">
+        <span class="task-custom-checkbox"></span>
+      </label>
+    </li>
+  </template>
 </body>
 
 </html>

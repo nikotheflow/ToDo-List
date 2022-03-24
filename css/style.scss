@@ -49,25 +49,35 @@ h1 {
 
 h2 {
   font-size: 16px;
-  margin-bottom: 10px;
 }
 
 h3 {
   font-size: 14px;
-  margin-bottom: 10px;
 }
 
-p {
+main {
+  display: flex;
+}
+
+.tasks-counter {
   font-size: 12px;
+}
+
+.task-name {
+  font-size: 14px;
+}
+
+.section-lists {
+  margin-right: 20px;
 }
 
 .lists {
   display: flex;
   flex-direction: column;
+  width: 160px;
 
   &_list {
     position: relative;
-    max-width: 150px;
     padding: 10px 15px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -81,10 +91,7 @@ p {
   }
 
   &_list-name {
-    margin-bottom: 6px;
-  }
-
-  &_task-counter {
+    margin-bottom: 4px;
   }
 
   &_delete-list-btn {
@@ -95,5 +102,36 @@ p {
     width: 15px;
     height: 15px;
     background-color: #eee;
+  }
+
+  &_list-creator {
+    width: 100%;
+  }
+}
+.section-tasks {
+  min-width: 300px;
+  padding: 10px 15px;
+  margin-bottom: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.tasks {
+  &_header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &_list {
+    margin-bottom: 20px;
+  }
+
+  &-item {
+    margin-bottom: 10px;
   }
 }
