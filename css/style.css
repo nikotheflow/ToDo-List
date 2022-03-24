@@ -23,12 +23,42 @@ img {
   vertical-align: top;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
 html,
 body {
   height: 100%;
   line-height: 1;
   background-color: #fff;
   font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 12px;
 }
 
 .lists {
@@ -39,17 +69,16 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 20px 40px;
 }
 
 .lists_list {
   position: relative;
-  max-width: 200px;
-  padding: 15px 30px;
-  margin-bottom: 20px;
+  max-width: 150px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
   border-radius: 10px;
-  -webkit-box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   cursor: pointer;
 }
@@ -67,7 +96,7 @@ body {
   text-align: center;
   top: 10px;
   right: 10px;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   background-color: #eee;
 }

@@ -9,7 +9,17 @@ let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
 listsContainer.addEventListener("click", (e) => {
-  if (e.target.tagName.toLowerCase() === "ul") return;
+  if (e.target.classList.contains("lists_delete-list-btn")) {
+    lists = lists.filter(
+      (list) => list.id !== e.target.closest(".lists_list").dataset.listId
+    );
+    saveAndRender();
+    return;
+  }
+
+  if (e.target.tagName.toLowerCase() === "ul") {
+    return;
+  }
 
   if (e.target.closest(".lists_list").tagName.toLowerCase() === "li") {
     selectedListId = e.target.closest(".lists_list").dataset.listId;

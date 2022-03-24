@@ -11,31 +11,34 @@
 </head>
 
 <body>
+  <header>
+    <h1>Better ToDo List</h1>
+  </header>
 
-  <h1>ToDo List</h1>
+  <section class="section-lists">
+    <h2>My lists</h2>
 
-  <h2>My Lists</h2>
+    <ul class="lists">
+      <li class="lists_list lists_list__active">
+        <h3 class="lists_list-name">Work</h3>
+        <p class="lists_task-counter">3 tasks</p>
+        <div class="lists_delete-list-btn"></div>
+      </li>
+      <li class="lists_list">
+        <h3 class="lists_list-name">Breaking</h3>
+        <p class="lists_task-counter">5 tasks</p>
+      </li>
+      <li class="lists_list">
+        <h3 class="lists_list-name">Study</h3>
+        <p class="lists_task-counter">4 tasks</p>
+      </li>
+    </ul>
 
-  <ul class="lists">
-    <li class="lists_list lists_list__active">
-      <h3 class="lists_list-name">Work</h3>
-      <p class="lists_task-counter">3 tasks</p>
-      <div class="lists_delete-list-btn"></div>
-    </li>
-    <li class="lists_list">
-      <h3 class="lists_list-name">Breaking</h3>
-      <p class="lists_task-counter">5 tasks</p>
-    </li>
-    <li class="lists_list">
-      <h3 class="lists_list-name">Study</h3>
-      <p class="lists_task-counter">4 tasks</p>
-    </li>
-  </ul>
-
-  <form class="new-list" action="">
-    <input class="new-list_list-name" type="text" name="" id="">
-    <button type="new-list_create-btn">+</button>
-  </form>
+    <form class="new-list" action="">
+      <input class="new-list_list-name" type="text" name="" id="">
+      <button type="new-list_create-btn">+</button>
+    </form>
+  </section>
 
 </body>
 
