@@ -40,7 +40,41 @@ listsContainer.addEventListener("click", (e) => {
 
   if (e.target.closest(".lists_list").tagName.toLowerCase() === "li") {
     selectedListId = e.target.closest(".lists_list").dataset.listId;
+    selectedList = lists.find((list) => list.id === selectedListId);
     saveAndRender();
+  }
+});
+
+tasksContainer.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "input") {
+    const selectedTask = selectedList.tasks.find(
+      (task) => task.id === e.target.id
+    );
+    const selectedTaskIndex = selectedList.tasks.indexOf(selectedTask);
+
+    selectedTask.complete = e.target.checked;
+
+    selectedList.tasks.splice(selectedTaskIndex, 1);
+
+    selectedTask.complete === true
+      ? selectedList.tasks.push(selectedTask)
+      : selectedList.tasks.unshift(selectedTask);
+
+    saveAndRender();
+  }
+
+  if (e.target.tagName.toLowerCase() === "button") {
+    const selectedTask = selectedList.tasks.find(
+      (task) => task.id === e.target.closest(".task").dataset.taskId
+    );
+    const selectedTaskIndex = selectedList.tasks.indexOf(selectedTask);
+
+    if (e.target.classList.contains("task-delete-btn")) {
+      selectedList.tasks.splice(selectedTaskIndex, 1);
+      saveAndRender();
+    } else if (e.target.classList.contains("task-edit-btn")) {
+      console.log(edit);
+    }
   }
 });
 
@@ -63,7 +97,7 @@ newTaskForm.addEventListener("submit", (e) => {
   newTaskInput.value = null;
 
   const currentList = lists.find((list) => list.id === selectedListId);
-  currentList.tasks.push(task);
+  currentList.tasks.unshift(task);
   saveAndRender();
 });
 
@@ -104,8 +138,11 @@ function render() {
 function renderTasks(list) {
   list.tasks.forEach((task) => {
     const taskElement = document.importNode(taskTemplate.content, true);
+    const taskItem = taskElement.querySelector("li");
     const checkbox = taskElement.querySelector("input");
     const label = taskElement.querySelector("label");
+
+    taskItem.dataset.taskId = task.id;
 
     checkbox.id = task.id;
     checkbox.checked = task.complete;
