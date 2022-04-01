@@ -1,14 +1,15 @@
 const listsContainer = document.querySelector(".lists");
+const listTemplate = document.getElementById("list-template");
 const newListForm = document.querySelector(".lists_list-creator");
-const newListInput = document.querySelector(".list-creator_list-name");
+const newListInput = document.querySelector(".list-creator_list-title");
 
 const tasksSection = document.querySelector(".section-tasks");
 const tasksContainer = document.querySelector(".tasks");
-const tasksListName = document.querySelector(".tasks_list-name");
-const tasksCounterString = document.querySelector(".tasks_tasks-counter");
+const tasksListName = document.querySelector(".tasks__list-title");
+const tasksCounterString = document.querySelector(".tasks__tasks-counter");
 const taskTemplate = document.getElementById("task-template");
 const newTaskForm = document.querySelector(".tasks_task-creator");
-const newTaskInput = document.querySelector(".task-creator_task-name");
+const newTaskInput = document.querySelector(".task-creator__task-title");
 
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
@@ -22,7 +23,7 @@ render();
 
 listsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("lists_delete-list-btn")) {
-    const clickedListId = e.target.closest(".lists_list").dataset.listId;
+    const clickedListId = e.target.closest(".list-link").dataset.listId;
 
     lists = lists.filter((list) => list.id !== clickedListId);
 
@@ -38,8 +39,8 @@ listsContainer.addEventListener("click", (e) => {
     return;
   }
 
-  if (e.target.closest(".lists_list").tagName.toLowerCase() === "li") {
-    selectedListId = e.target.closest(".lists_list").dataset.listId;
+  if (e.target.closest(".list-link").tagName.toLowerCase() === "li") {
+    selectedListId = e.target.closest(".list-link").dataset.listId;
     selectedList = lists.find((list) => list.id === selectedListId);
     saveAndRender();
   }
@@ -154,41 +155,31 @@ function renderTasks(list) {
   });
 }
 
+function renderLists() {
+  lists.forEach((list) => {
+    const listElement = document.importNode(listTemplate.content, true);
+    const listItem = listElement.querySelector("li");
+    const listName = listElement.querySelector("h3");
+    const taskCounter = listElement.querySelector("p");
+
+    listItem.dataset.listId = list.id;
+    listName.innerText = list.name;
+    taskCounter.innerText = getTaskCount(list);
+
+    if (listItem.dataset.listId === selectedListId) {
+      listItem.classList.add("list-link_active");
+    }
+
+    listsContainer.appendChild(listElement);
+  });
+}
+
 function getTaskCount(list) {
   const incompleteTasksCount = list.tasks.filter(
     (task) => !task.complete
   ).length;
   const taskString = incompleteTasksCount === 1 ? "task" : "tasks";
   return `${incompleteTasksCount} ${taskString} remaining`;
-}
-
-function renderLists() {
-  lists.forEach((list) => {
-    const listElement = document.createElement("li");
-    const listName = document.createElement("h3");
-    const taskCounter = document.createElement("p");
-    const deleteListBtn = document.createElement("div");
-
-    listElement.classList.add("lists_list");
-    listName.classList.add("lists_list-name");
-    taskCounter.classList.add("lists_tasks-counter", "tasks-counter");
-    deleteListBtn.classList.add("lists_delete-list-btn");
-
-    listElement.dataset.listId = list.id;
-    listName.innerText = list.name;
-    taskCounter.innerText = getTaskCount(list);
-    deleteListBtn.innerText = "X";
-
-    if (listElement.dataset.listId === selectedListId) {
-      listElement.classList.add("lists_list__active");
-    }
-
-    listElement.appendChild(listName);
-    listElement.appendChild(taskCounter);
-    listElement.appendChild(deleteListBtn);
-
-    listsContainer.appendChild(listElement);
-  });
 }
 
 function saveAndRender() {
