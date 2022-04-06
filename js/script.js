@@ -47,20 +47,28 @@ listsContainer.addEventListener("click", (e) => {
 });
 
 tasksContainer.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "li") {
+    const selectedTask = selectedList.tasks.find(
+      (task) => task.id === e.target.dataset.taskId
+    );
+    const selectedTaskCheckbox = e.target.querySelector(".task-checkbox");
+
+    selectedTaskCheckbox.checked = !selectedTaskCheckbox.checked;
+
+    selectedTask.complete = selectedTaskCheckbox.checked;
+
+    moveTask(selectedTask);
+    saveAndRender();
+  }
+
   if (e.target.tagName.toLowerCase() === "input") {
     const selectedTask = selectedList.tasks.find(
       (task) => task.id === e.target.id
     );
-    const selectedTaskIndex = selectedList.tasks.indexOf(selectedTask);
 
     selectedTask.complete = e.target.checked;
 
-    selectedList.tasks.splice(selectedTaskIndex, 1);
-
-    selectedTask.complete === true
-      ? selectedList.tasks.push(selectedTask)
-      : selectedList.tasks.unshift(selectedTask);
-
+    moveTask(selectedTask);
     saveAndRender();
   }
 
@@ -112,6 +120,16 @@ function createList(listName) {
     name: listName,
     tasks: [],
   };
+}
+
+function moveTask(selectedTask) {
+  const selectedTaskIndex = selectedList.tasks.indexOf(selectedTask);
+
+  selectedList.tasks.splice(selectedTaskIndex, 1);
+
+  selectedTask.complete === true
+    ? selectedList.tasks.push(selectedTask)
+    : selectedList.tasks.unshift(selectedTask);
 }
 
 function save() {
