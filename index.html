@@ -18,22 +18,27 @@
         </ul>
 
         <form class="lists_list-creator" action="">
-          <input class="list-creator_list-title custom-input" type="text" name="" id="">
+          <input class="list-creator_list-title custom-input" type="text" name="" id="" placeholder="Add a new list">
           <!-- <button type="list-creator_create-btn">+</button> -->
         </form>
       </section>
 
       <section class="section-tasks">
         <div class="tasks__header">
-          <h2 class="list-title tasks__list-title">Work</h2>
-          <p class="tasks-counter tasks__tasks-counter ">5 task remaining</p>
+          <h2 class="list-title tasks__list-title"></h2>
+          <p class="tasks-counter tasks__tasks-counter "></p>
         </div>
 
         <ul class="tasks">
         </ul>
 
-        <form class="tasks_task-creator task-create" action="">
-          <input class="task-creator__task-title custom-input" type="text" name="" id="">
+        <form class="new-task-form" action="">
+          <button class="add-btn icon-btn tasks__add-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+            </svg>
+          </button>
+          <input class="new-task-input task" type="text" name="" id="" placeholder="Add a new task">
           <!-- <button type="task-creator_create-btn">+</button> -->
         </form>
       </section>
@@ -44,7 +49,12 @@
     <li class="list-link lists__list-link">
       <h3 class="list-title lists__list-title"></h3>
       <p class="tasks-counter lists__tasks-counter"></p>
-      <!-- <button class="lists_delete-list-btn">delete</button> -->
+      <button class="delete-btn icon-btn lists__delete-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+        </svg>
+      </button>
     </li>
   </template>
 

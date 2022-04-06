@@ -8,8 +8,8 @@ const tasksContainer = document.querySelector(".tasks");
 const tasksListName = document.querySelector(".tasks__list-title");
 const tasksCounterString = document.querySelector(".tasks__tasks-counter");
 const taskTemplate = document.getElementById("task-template");
-const newTaskForm = document.querySelector(".tasks_task-creator");
-const newTaskInput = document.querySelector(".task-creator__task-title");
+const newTaskForm = document.querySelector(".new-task-form");
+const newTaskInput = document.querySelector(".new-task-input");
 
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
@@ -22,7 +22,7 @@ let selectedList = lists.find((list) => list.id === selectedListId) || null;
 render();
 
 listsContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("lists_delete-list-btn")) {
+  if (e.target.classList.contains("delete-btn")) {
     const clickedListId = e.target.closest(".list-link").dataset.listId;
 
     lists = lists.filter((list) => list.id !== clickedListId);
