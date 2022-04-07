@@ -1,7 +1,7 @@
 const listsContainer = document.querySelector(".lists");
 const listTemplate = document.getElementById("list-template");
-const newListForm = document.querySelector(".lists_list-creator");
-const newListInput = document.querySelector(".list-creator_list-title");
+const newListForm = document.querySelector(".new-list-form");
+const newListInput = document.querySelector(".new-list-input");
 
 const tasksSection = document.querySelector(".section-tasks");
 const tasksContainer = document.querySelector(".tasks");
@@ -22,6 +22,7 @@ let selectedList = lists.find((list) => list.id === selectedListId) || null;
 render();
 
 listsContainer.addEventListener("click", (e) => {
+  console.log(e.target, e.currentTarget);
   if (e.target.classList.contains("delete-btn")) {
     const clickedListId = e.target.closest(".list-link").dataset.listId;
 

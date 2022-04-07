@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-
+svg,
+path {
+  pointer-events: none;
+}
 *,
 *::before,
 *::after {
@@ -75,6 +78,17 @@ main {
   &_active {
     background-color: #f5f5f5;
   }
+
+  &:hover {
+    .delete-btn {
+      opacity: 1;
+      transition: all 0.2s ease;
+    }
+
+    &:not(.list-link_active) {
+      background-color: #fafafa;
+    }
+  }
 }
 
 .list-title {
@@ -97,13 +111,15 @@ main {
 }
 
 .delete-btn {
+  opacity: 0;
+  transition: all 0.2s ease;
   width: 18px;
   height: 18px;
+  background: url(../img/delete-icon.svg) center;
+  background-size: 100%;
 }
 
 .lists {
-  margin-bottom: 20px;
-
   &__list-title {
     margin-bottom: 2px;
   }
@@ -124,6 +140,8 @@ main {
 }
 
 .tasks {
+  margin-bottom: 16px;
+
   &__header {
     margin-bottom: 16px;
     display: flex;
@@ -140,7 +158,7 @@ main {
   }
 
   &__add-btn {
-    width: 34px;
+    width: 32px;
     height: 36px;
     position: absolute;
     inset: 0;
@@ -150,23 +168,87 @@ main {
 .task {
   background-color: #fff;
   border-radius: 8px;
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 6px;
   cursor: pointer;
+
+  &-title {
+    font-size: 14px;
+  }
+
+  &:hover &-checkbox + label::before {
+    background-color: #f5f5f5;
+  }
+
+  &-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    & + label {
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    & + label::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      border: 1px solid #aaa;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 50% 50%;
+      cursor: pointer;
+    }
+
+    &:checked + label {
+      color: #757575;
+      text-decoration: line-through;
+    }
+
+    &:checked + label::before {
+      background-image: url("../img/done-icon.svg");
+      background-size: contain;
+    }
+
+    &:focus + label::before {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    &:focus:not(:checked) + label::before {
+      border-color: #80bdff;
+    }
+  }
 }
 
-.task-title {
-  font-size: 14px;
-}
-
-.custom-input {
-  border: none;
-}
 .new-task-form {
   position: relative;
 }
+
+.new-list-form {
+  padding: 10px;
+  display: flex;
+  place-content: center space-between;
+}
+
+.new-list-input {
+  width: 70%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+  cursor: text;
+}
+
 .new-task-input {
   width: 100%;
-  padding-left: 30px;
+  padding-left: 32px;
   border: none;
+  cursor: text;
 }
