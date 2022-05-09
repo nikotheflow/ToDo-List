@@ -56,6 +56,15 @@ main {
   width: 100%;
 }
 
+@media (max-width: 575.98px) {
+  main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .container {
   max-width: 600px;
   margin: auto;
@@ -64,6 +73,8 @@ main {
 .section-lists {
   background-color: #fff;
   padding: 10px;
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
 }
 
 .section-tasks {
@@ -78,6 +89,7 @@ main {
   position: relative;
   border-radius: 2px;
   padding: 10px;
+  padding-right: 14px;
   cursor: pointer;
 }
 
@@ -125,6 +137,12 @@ main {
   background-size: 100%;
 }
 
+@media (max-width: 575.98px) {
+  .delete-btn {
+    opacity: 0.5;
+  }
+}
+
 .lists__list-title {
   margin-bottom: 2px;
 }
@@ -164,6 +182,13 @@ main {
   font-size: 18px;
 }
 
+@media (max-width: 575.98px) {
+  .tasks__list-title {
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+  }
+}
+
 .tasks__tasks-counter {
   font-size: 14px;
 }
@@ -173,9 +198,17 @@ main {
   height: 36px;
   position: absolute;
   inset: 0;
+  z-index: 1;
+}
+
+.tasks__delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 4px;
 }
 
 .task {
+  position: relative;
   background-color: #fff;
   border-radius: 8px;
   padding: 8px;
@@ -185,6 +218,14 @@ main {
 
 .task-title {
   font-size: 14px;
+}
+
+@media (min-width: 576px) {
+  .task:hover .delete-btn {
+    opacity: 1;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
 }
 
 .task:hover .task-checkbox + label::before {
@@ -271,6 +312,7 @@ main {
 
 .new-task-input {
   width: 100%;
+  height: 34px;
   padding-left: 32px;
   border: none;
   cursor: text;

@@ -50,6 +50,10 @@ input {
 main {
   display: flex;
   width: 100%;
+
+  @media (max-width: 575.98px) {
+    flex-direction: column;
+  }
 }
 
 .container {
@@ -60,6 +64,7 @@ main {
 .section-lists {
   background-color: #fff;
   padding: 10px;
+  flex-basis: 40%;
 }
 
 .section-tasks {
@@ -73,6 +78,7 @@ main {
   position: relative;
   border-radius: 2px;
   padding: 10px;
+  padding-right: 14px;
   cursor: pointer;
 
   &_active {
@@ -117,6 +123,10 @@ main {
   height: 18px;
   background: url(../img/delete-icon.svg) center;
   background-size: 100%;
+
+  @media (max-width: 575.98px) {
+    opacity: 0.5;
+  }
 }
 
 .lists {
@@ -151,6 +161,10 @@ main {
 
   &__list-title {
     font-size: 18px;
+
+    @media (max-width: 575.98px) {
+      flex-basis: 60%;
+    }
   }
 
   &__tasks-counter {
@@ -162,10 +176,18 @@ main {
     height: 36px;
     position: absolute;
     inset: 0;
+    z-index: 1;
+  }
+
+  &__delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 4px;
   }
 }
 
 .task {
+  position: relative;
   background-color: #fff;
   border-radius: 8px;
   padding: 8px;
@@ -174,6 +196,15 @@ main {
 
   &-title {
     font-size: 14px;
+  }
+
+  @media (min-width: 576px) {
+    &:hover {
+      .delete-btn {
+        opacity: 1;
+        transition: all 0.2s ease;
+      }
+    }
   }
 
   &:hover &-checkbox + label::before {
@@ -248,6 +279,7 @@ main {
 
 .new-task-input {
   width: 100%;
+  height: 34px;
   padding-left: 32px;
   border: none;
   cursor: text;

@@ -17,19 +17,84 @@ const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
-let selectedList = lists.find((list) => list.id === selectedListId) || null;
+let selectedList = lists.find((list) => list.id === selectedListId) || "0";
+
+// lists for demonstration functions of ToDo List
+if (localStorage.getItem(LOCAL_STORAGE_LIST_KEY).length == 2) {
+  lists = [
+    {
+      id: "1652105830989",
+      name: "Study",
+      tasks: [
+        { id: "1652105938571", name: "Learn javascript", complete: false },
+        { id: "1652105949820", name: "Make a pet project", complete: false },
+        { id: "1652105980364", name: "Listen english lesson", complete: false },
+      ],
+    },
+    {
+      id: "1652105833060",
+      name: "Work",
+      tasks: [
+        { id: "1652105872813", name: "Write documentation", complete: false },
+        {
+          id: "1652105906143",
+          name: "Fix bugs with clean lists",
+          complete: true,
+        },
+      ],
+    },
+    {
+      id: "1652105838520",
+      name: "Shop",
+      tasks: [
+        { id: "1652105856253", name: "Cheese", complete: false },
+        { id: "1652105854450", name: "Milk", complete: false },
+        { id: "1652105850100", name: "Tomatoes", complete: false },
+        { id: "1652105847070", name: "Cucumber", complete: false },
+        { id: "1652105843440", name: "Broad", complete: false },
+      ],
+    },
+    {
+      id: "1652106072223",
+      name: "Test list which you can try to delete",
+      tasks: [
+        { id: "1652106083562", name: "I want you delete me", complete: false },
+        {
+          id: "1652106114252",
+          name: "Check, uncheck, delete",
+          complete: false,
+        },
+        {
+          id: "1652106093282",
+          name: "I want you check me and delete",
+          complete: false,
+        },
+        { id: "1652106099702", name: "Just delete me", complete: false },
+        {
+          id: "1652108354519",
+          name: "And I am just task with very very very super mega hyper giga loooong title",
+          complete: false,
+        },
+        { id: "1652106078582", name: "Delete me", complete: false },
+      ],
+    },
+  ];
+
+  selectedListId = "1652105830989";
+
+  save();
+}
 
 render();
 
 listsContainer.addEventListener("click", (e) => {
-  console.log(e.target, e.currentTarget);
   if (e.target.classList.contains("delete-btn")) {
     const clickedListId = e.target.closest(".list-link").dataset.listId;
 
     lists = lists.filter((list) => list.id !== clickedListId);
 
     if (selectedListId === clickedListId) {
-      selectedListId = lists[0] ? lists[0].id : null;
+      selectedListId = lists[0] ? lists[0].id : "0";
     }
 
     saveAndRender();
@@ -79,11 +144,9 @@ tasksContainer.addEventListener("click", (e) => {
     );
     const selectedTaskIndex = selectedList.tasks.indexOf(selectedTask);
 
-    if (e.target.classList.contains("task-delete-btn")) {
+    if (e.target.classList.contains("tasks__delete-btn")) {
       selectedList.tasks.splice(selectedTaskIndex, 1);
       saveAndRender();
-    } else if (e.target.classList.contains("task-edit-btn")) {
-      console.log(edit);
     }
   }
 });
@@ -142,7 +205,7 @@ function render() {
   clearElement(listsContainer);
   renderLists();
 
-  if (selectedListId === null) {
+  if (selectedListId === "0") {
     tasksSection.style.display = "none";
   } else {
     const selectedList = lists.find((list) => list.id === selectedListId);
