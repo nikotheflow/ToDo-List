@@ -1,7 +1,7 @@
 # ToDo List - Pet project that every beginner frontend developer should make.
 ### The goal of the project is to develop the skills of vanilla javascript apps creating.
 
-![todo list preview](/img/preview.jpg "todo list preview")
+![todo list preview](/img/preview.png "todo list preview")
 
 ### Technologies and Features
 
