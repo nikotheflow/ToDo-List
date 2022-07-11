@@ -175,8 +175,11 @@ function createTask(taskName) {
 }
 
 function createList(listName) {
+  const id = Date.now().toString();
+  selectedListId = id;
+
   return {
-    id: Date.now().toString(),
+    id: id,
     name: listName,
     tasks: [],
   };
